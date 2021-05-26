@@ -1,0 +1,118 @@
+nav {
+    top: 0;
+    position: fixed;
+    width: 300px;
+    height: calc(100vh - 160px);
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 99999;
+}
+
+.line {
+    width: 150px;
+    border-bottom: 1px solid #ceb291;
+}
+
+nav h1 {
+    cursor: default;
+    font-size: 32px;
+    font-weight: initial;
+    font-family: 'photograph-signature';
+}
+
+nav svg {
+    display: none;
+}
+
+nav ul {
+    text-align: center;
+    font-family: 'josefin sans';
+    font-weight: 300;
+    font-size: 30px;
+    list-style: none;
+}
+
+nav ul li {
+    cursor: pointer;
+    transition: 0.6s all;
+}
+
+nav ul li:hover {
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 4px;
+}
+
+nav p {
+    font-size: 13px;
+    font-family: 'josefin sans';
+}
+
+nav p span {
+    font-size: 8px;
+    vertical-align: top;
+}
+
+@media screen and (max-width: 750px) {
+    nav {
+        display: block;
+        width: calc(100% - 60px);
+        padding: 10px 30px;
+        height: 60px;
+        background: #fff;
+    }
+
+    .line {
+        display: none;
+    }
+
+    nav h1 {
+        display: inline;
+        width: 80%;
+        font-size: 25px;
+        line-height: 60px;
+        vertical-align: middle;
+    }
+
+    nav svg {
+        display: inline;
+        float: right;
+        fill: #ceb291;
+        margin-top: 30px;
+        transform: translateY(-50%);
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        position: absolute;
+        width: 100%;
+        margin-left: -30px;
+        height: calc(100vh - 80px);
+        background: #fff;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav p {
+        display: none;
+        background: #fff;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 20px;
+        margin-left: -30px;
+        text-align: center;
+    }
+
+    nav p.show {
+        display: block;
+    }
+}

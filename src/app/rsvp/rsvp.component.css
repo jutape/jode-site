@@ -1,0 +1,140 @@
+form {
+  width: 400px;
+  background-color: #fff;
+  margin: 25px auto;
+  color: #666;
+  padding: 0px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-family: "josefin sans";
+  overflow: hidden;
+}
+
+.info {
+  padding: 10px;
+}
+
+h1,
+h2,
+p {
+  text-align: center;
+  padding: 0px;
+  margin: 5px 5px;
+}
+
+h2 {
+  font-family: "photograph-signature", cursive;
+  font-weight: 100;
+  font-size: 26px;
+  line-height: 35px;
+}
+
+p.line {
+  margin: 0 0 20px 0;
+  color: #999;
+}
+
+form input {
+  font-size: 15px;
+  color: #666;
+  padding: 6px;
+  margin: 25px auto 20px;
+  display: block;
+  width: 75%;
+  font-family: 'josefin sans';
+  border: 1px solid #666;
+}
+
+input:focus {
+  outline: 0;
+}
+
+.checkbox {
+  width: calc(75% + 12px);
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
+input#check {
+  position: absolute;
+  opacity: 0;
+}
+
+input#check:checked + .label-check svg path {
+  stroke-dashoffset: 0;
+}
+
+input#check:focus + .label-check {
+  transform: scale(1.03);
+}
+
+#check + .label-check {
+  display: block;
+  border: 1px solid #666;
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+#check:active + .label-check:active {
+  transform: scale(1.05);
+}
+
+.label-check svg {
+  pointer-events: none;
+}
+
+.label-check svg path {
+  fill: none;
+  stroke: #666;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 101;
+  transition: all 350ms cubic-bezier(1, 0, .37, .91);
+
+}
+
+button {
+  color: white;
+  background-color: #96887d;
+  border: none;
+  font-family: "josefin sans";
+  font-size: 18px;
+  font-weight: 600;
+  padding: 15px 32px;
+  width: 50%;
+  white-space: nowrap;
+  margin: 20px auto 0px auto;
+}
+
+button.accept {
+  border-right: solid 1px #a39489;
+}
+
+button:hover {
+  background-color: #89807b;
+  transition: 0.5s;
+}
+
+button:focus {
+  outline: 0;
+}
+
+@media screen and (max-width: 440px){
+  form {
+    width: 98%;
+  }
+
+  button {
+    width: 100%;
+    margin: 0;
+  }
+
+  button.accept {
+    border-right: none;
+    border-bottom: 1px solid #a39489;
+  }
+}

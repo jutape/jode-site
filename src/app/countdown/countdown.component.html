@@ -1,0 +1,21 @@
+<div class="container">
+    <h2>Quer saber o final? então acompanha a contagem regressiva...</h2>
+    <div class="countdown">
+        <div>
+            {{ zeroPad(dias, 4) }}
+            <span>Dias</span>
+          </div>
+          <div>
+            {{ zeroPad(horas, 2) }}
+            <span>Hrs</span>
+          </div>
+          <div>
+            {{ zeroPad(minutos, 2) }}
+            <span>Min</span>
+          </div>
+          <div>
+            {{ zeroPad(segundos + 1, 2) }}
+            <span>seg</span>
+          </div>
+    </div>
+</div>

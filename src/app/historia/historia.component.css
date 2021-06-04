@@ -199,7 +199,7 @@
   margin: 1em 0 0 0.75em;
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 1110px) {
   .timeline {
     width: 100%;
     padding: 4em 0 1em 0;

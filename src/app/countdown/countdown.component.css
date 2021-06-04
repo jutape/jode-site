@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    font-family: 'josefin sans';
+    width: 90%;
+    justify-content: center;
+}
+
+.container h2 {
+    width: 100%;
+    text-align: center;
+}
+
+.countdown {
+    margin: 20px 0 10px 0;
+}
+
+.countdown div {
+    display: inline-block;
+    margin-left: 0.3em;
+    font-size: 4em;
+    font-weight: 200;
+    line-height: 1;
+    text-align: right;
+}
+
+.countdown div:first-child {
+    margin-left: 0;
+}
+
+.countdown div span {
+    display: block;
+    border-top: 1px solid #cecece;
+    padding-top: 3px;
+    font-size: 1rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    text-align: left;
+}

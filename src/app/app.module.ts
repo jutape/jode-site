@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { InicioComponent } from './inicio/inicio.component';
 import { HistoriaComponent } from './historia/historia.component';
 import { RsvpComponent } from './rsvp/rsvp.component';
+import { CountdownComponent } from './countdown/countdown.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { RsvpComponent } from './rsvp/rsvp.component';
     NavComponent,
     InicioComponent,
     HistoriaComponent,
-    RsvpComponent
+    RsvpComponent,
+    CountdownComponent
   ],
   imports: [
     BrowserModule,

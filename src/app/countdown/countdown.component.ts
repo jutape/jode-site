@@ -12,6 +12,7 @@ export class CountdownComponent implements OnInit {
   horas = 0;
   minutos = 0;
   segundos = 0;
+  
   constructor() { }
 
   ngOnInit(): void {

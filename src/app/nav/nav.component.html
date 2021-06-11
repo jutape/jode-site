@@ -7,11 +7,11 @@
     <rect y="60" width="100" height="15"></rect>
   </svg>
   <ul [ngClass]="{'show': showMenu}">
-    <li>Inicio</li>
-    <li>História</li>
-    <li>RSVP</li>
-    <li>Presentes</li>
-    <li>Quando?</li>
+    <li (click)="navigateTo('inicio')">Inicio</li>
+    <li (click)="navigateTo('historia')">História</li>
+    <li (click)="navigateTo('countdown')">Quando?</li>
+    <li (click)="navigateTo('rsvp')">RSVP</li>
+    <li (click)="navigateTo('presentes')">Presentes</li>
   </ul>
   <div class="line"></div>
   <p [ngClass]="{'show': showMenu}">Feito por Jéssica e João<span>&copy;</span></p>

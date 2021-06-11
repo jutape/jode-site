@@ -18,4 +18,16 @@ export class NavComponent implements OnInit {
     this.showMenu = !this.showMenu;
   }
 
+  navigateTo(navigateId: string) {
+    document.getElementById(navigateId).scrollIntoView({
+      behavior: 'smooth'
+    });
+    if(this.showMenu) {
+      setTimeout(() => {
+        window.scrollBy(0, -80);
+      }, 800);
+    }
+    this.showMenu = false;
+  }
+
 }

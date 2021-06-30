@@ -40,12 +40,18 @@ form input {
   margin: 25px auto 20px;
   display: block;
   width: 75%;
-  font-family: 'josefin sans';
+  font-family: "josefin sans";
   border: 1px solid #666;
 }
 
 input:focus {
   outline: 0;
+}
+
+.error-message {
+  color: #e24646;
+  font-size: 12px;
+  margin: -15px 0 3px 0;
 }
 
 .checkbox {
@@ -75,7 +81,7 @@ input#check:focus + .label-check {
   width: 27px;
   height: 27px;
   cursor: pointer;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 #check:active + .label-check:active {
@@ -94,11 +100,11 @@ input#check:focus + .label-check {
   stroke-linejoin: round;
   stroke-dasharray: 100;
   stroke-dashoffset: 101;
-  transition: all 350ms cubic-bezier(1, 0, .37, .91);
-
+  transition: all 350ms cubic-bezier(1, 0, 0.37, 0.91);
 }
 
 button {
+  cursor: pointer;
   color: white;
   background-color: #96887d;
   border: none;
@@ -119,12 +125,15 @@ button:hover {
   background-color: #89807b;
   transition: 0.5s;
 }
+button:disabled {
+  background-color: #929292;
+}
 
 button:focus {
   outline: 0;
 }
 
-@media screen and (max-width: 440px){
+@media screen and (max-width: 440px) {
   form {
     width: 98%;
   }
@@ -137,5 +146,48 @@ button:focus {
   button.accept {
     border-right: none;
     border-bottom: 1px solid #a39489;
+  }
+}
+
+.clock-loader {
+  --clock-color: #666;
+  --clock-width: 2rem;
+  --clock-radius: calc(var(--clock-width) / 2);
+  --clock-minute-length: calc(var(--clock-width) * 0.4);
+  --clock-hour-length: calc(var(--clock-width) * 0.2);
+  --clock-thickness: 0.2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--clock-width);
+  height: var(--clock-width);
+  border: 3px solid var(--clock-color);
+  border-radius: 50%;
+  margin: auto;
+}
+.clock-loader::before,
+.clock-loader::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--clock-radius) * 0.25);
+  width: var(--clock-thickness);
+  background: var(--clock-color);
+  border-radius: 10px;
+  transform-origin: center calc(100% - calc(var(--clock-thickness) / 2));
+  animation: spin infinite linear;
+}
+.clock-loader::before {
+  height: var(--clock-minute-length);
+  animation-duration: 2s;
+}
+.clock-loader::after {
+  top: calc(var(--clock-radius) * 0.25 + var(--clock-hour-length));
+  height: var(--clock-hour-length);
+  animation-duration: 15s;
+}
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
   }
 }

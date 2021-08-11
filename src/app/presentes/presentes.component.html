@@ -1,0 +1,174 @@
+<div class="container">
+  <div class="categorias">
+    <button
+      (click)="getAllPresentes()"
+      [ngClass]="{ active: !categoriaSelecionada }"
+    >
+      Todos
+    </button>
+    <div class="line"></div>
+    <button
+      *ngFor="let categoria of categorias"
+      (click)="getPresentesByCategoria(categoria.id)"
+      [ngClass]="{ active: categoria.id === categoriaSelecionada }"
+    >
+      {{ categoria.titulo }}
+    </button>
+  </div>
+  <div class="produtos">
+    <div class="produto" *ngFor="let produto of produtos">
+      <img [src]="produto.imagem" [alt]="produto.nome" />
+      <div class="info">
+        <h2>{{ produto.nome }}</h2>
+        <p>R$ {{ produto.preco }}</p>
+      </div>
+      <h3>{{ produto.categoria.titulo }}</h3>
+      <app-modal [id]="'select-buy-option-' + produto.id">
+        <div class="buy-process" *ngIf="estadoModal === 'opcoes'">
+          <h2>Selecione opção de compra</h2>
+          <button (click)="mudarEstadoModal('formulario_compra')">
+            Comprar por aqui
+          </button>
+          <a
+            [href]="produto.link"
+            (click)="closeModal('select-buy-option-' + produto.id)"
+            target="_blank"
+            >Comprar no site da loja</a
+          >
+          <div
+            class="close"
+            (click)="closeModal('select-buy-option-' + produto.id)"
+          >
+            X
+          </div>
+        </div>
+        <div id="formulario_compra" *ngIf="estadoModal === 'formulario_compra'">
+          <form [formGroup]="formCompra" class="buy-process">
+            <h2>Dados pagamento</h2>
+            <input type="text" id="nome" placeholder="Nome" formControlName="nome" required />
+            <input type="email" id="email" placeholder="Email" formControlName="email" required />
+            <input type="text" id="celular" placeholder="Celular" formControlName="celular" required />
+            <h3>Total: R$ {{ produto.preco }}</h3>
+            <select name="quantidade" id="quantidade" formControlName="quantidade" required>
+              <option value="">Quantidade</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+            <select name="parcelas" id="parcelas" formControlName="parcelas" required>
+              <option value="">Parcelas</option>
+              <option value="1">1x R$ {{ produto.preco.toFixed(2) }}</option>
+              <option value="2">
+                2x R$ {{ (produto.preco / 2).toFixed(2) }}
+              </option>
+              <option value="3">
+                3x R$ {{ (produto.preco / 3).toFixed(2) }}
+              </option>
+            </select>
+            <button (click)="mudarEstadoModal('loading')">Comprar</button>
+            <div
+              class="close"
+              (click)="closeModal('select-buy-option-' + produto.id)"
+            >
+              X
+            </div>
+          </form>
+        </div>
+        <div id="loading" *ngIf="estadoModal === 'loading'">
+          <app-loading (click)="mudarEstadoModal('sucesso')"></app-loading>
+        </div>
+        <div id="sucesso" *ngIf="estadoModal === 'sucesso'">
+          <div class="buy-process">
+            <svg
+              version="1.1"
+              id="Layer_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 100.353 100.353"
+              style="enable-background: new 0 0 100.353 100.353"
+              xml:space="preserve"
+            >
+              <g>
+                <path
+                  style="fill: #231f20"
+                  d="M96.747,39.242c-0.186-0.782-0.97-1.265-1.755-1.079c-0.782,0.187-1.265,0.972-1.078,1.754
+		c0.766,3.212,1.155,6.604,1.155,10.083c0,24.85-20.67,45.067-46.078,45.067S2.913,74.85,2.913,50
+		c0-24.852,20.67-45.07,46.078-45.07c10.119,0,19.785,3.202,27.952,9.26c0.644,0.479,1.558,0.344,2.037-0.302
+		s0.344-1.558-0.302-2.037C70.006,5.417,59.74,2.018,48.991,2.018C21.977,2.018,0,23.542,0,50c0,26.456,21.977,47.98,48.991,47.98
+		c27.014,0,48.991-21.524,48.991-47.98C97.982,46.295,97.566,42.676,96.747,39.242z"
+                />
+                <path
+                  style="fill: #231f20"
+                  d="M47.98,71.683c-0.386,0-0.756-0.153-1.03-0.426L19.637,43.948c-0.569-0.569-0.569-1.491,0-2.06
+		c0.568-0.569,1.49-0.569,2.059,0l26.223,26.219l49.538-55.486c0.536-0.6,1.456-0.652,2.056-0.116s0.652,1.456,0.117,2.056
+		L49.066,71.197c-0.267,0.299-0.645,0.475-1.045,0.486C48.007,71.683,47.994,71.683,47.98,71.683z"
+                />
+              </g>
+            </svg>
+            <h1 (click)="mudarEstadoModal('falha')">Sucesso!</h1>
+            <div
+              class="close"
+              (click)="closeModal('select-buy-option-' + produto.id)"
+            >
+              X
+            </div>
+          </div>
+        </div>
+        <div id="falha" *ngIf="estadoModal === 'falha'">
+          <div class="buy-process">
+            <svg
+              version="1.1"
+              id="Layer_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 100.353 100.353"
+              style="enable-background: new 0 0 100.353 100.353"
+              xml:space="preserve"
+            >
+              <g>
+                <g>
+                  <path
+                    style="fill: #231f20"
+                    d="M68.28,71.726c-0.373,0-0.746-0.142-1.03-0.427L30.691,34.733c-0.569-0.569-0.569-1.491,0-2.06
+			s1.491-0.569,2.059,0L69.308,69.24c0.569,0.569,0.569,1.491,0,2.06C69.025,71.583,68.652,71.726,68.28,71.726z"
+                  />
+                  <path
+                    style="fill: #231f20"
+                    d="M31.721,71.726c-0.373,0-0.745-0.142-1.03-0.426c-0.569-0.569-0.569-1.491,0-2.06l36.567-36.567
+			c0.569-0.569,1.49-0.569,2.059,0c0.569,0.569,0.569,1.491,0,2.06L32.75,71.3C32.466,71.583,32.094,71.726,31.721,71.726z"
+                  />
+                </g>
+                <path
+                  style="fill: #231f20"
+                  d="M50.008,100.004C22.433,100.004,0,77.576,0,50.008C0,22.434,22.433,0,50.008,0
+		C77.574,0,100,22.434,100,50.008C100,77.575,77.574,100.004,50.008,100.004z M50.008,2.912c-25.969,0-47.095,21.127-47.095,47.095
+		c0,25.962,21.127,47.083,47.095,47.083c25.96,0,47.079-21.122,47.079-47.083C97.088,24.039,75.968,2.912,50.008,2.912z"
+                />
+              </g>
+            </svg>
+            <h1>
+              Houve uma falha!
+            </h1>
+            <div
+              class="close"
+              (click)="closeModal('select-buy-option-' + produto.id)"
+            >
+              X
+            </div>
+          </div>
+        </div>
+      </app-modal>
+      <div
+        class="buy-btn"
+        (click)="openModal('select-buy-option-' + produto.id)"
+      ></div>
+    </div>
+  </div>
+</div>

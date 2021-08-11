@@ -1,7 +1,7 @@
 section .primary-image {
-  background: url("https://fakeimg.pl/1280x720/c4aa99/eae0d0/");
+  background: url("/assets/img/img1.png");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 0% 55%;
   background-size: cover;
   width: 100%;
   height: 400px;
@@ -34,7 +34,7 @@ section .primary-image {
 
 .grid-container {
   display: grid;
-  height: 750px;
+  height: 880px;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 10px 10px;
@@ -49,28 +49,28 @@ section .primary-image {
 }
 .photo1 {
   grid-area: photo1;
-  background: url("https://fakeimg.pl/1280x720/f5f1ee/eae0d0/");
+  background: url("/assets/img/img3.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .photo2 {
   grid-area: photo2;
-  background: url("https://fakeimg.pl/1280x720/89807b/eae0d0/");
+  background: url("/assets/img/img2.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .photo3 {
   grid-area: photo3;
-  background: url("https://fakeimg.pl/1280x720/c4aa99/eae0d0/");
+  background: url("/assets/img/img6.jpeg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .photo4 {
   grid-area: photo4;
-  background: url("https://fakeimg.pl/1280x720/96887d/eae0d0/");
+  background: url("/assets/img/img5.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

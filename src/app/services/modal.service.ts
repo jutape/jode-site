@@ -12,12 +12,10 @@ export class ModalService {
   }
 
   remove(id: string) {
-    console.log(id);
     this.modals = this.modals.filter((x) => x.id === id);
   }
 
   open(id: string) {
-    console.log(id);
     const modal = this.modals.find((x) => x.id === id);
     modal.open();
   }

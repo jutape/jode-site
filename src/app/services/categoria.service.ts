@@ -8,7 +8,7 @@ import { Categoria } from '../models/categoria.model';
 })
 export class CategoriaService {
 
-  apiUrl = 'http://localhost:8080';
+  apiUrl = 'http://ec2-3-137-176-93.us-east-2.compute.amazonaws.com';
 
   constructor(private http: HttpClient) { }
 

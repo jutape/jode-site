@@ -63,7 +63,7 @@ section .primary-image {
 }
 .photo3 {
   grid-area: photo3;
-  background: url("/assets/img/img6.jpeg");
+  background: url("/assets/img/img6.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

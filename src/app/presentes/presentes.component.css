@@ -101,6 +101,10 @@
   margin: 10px 2px;
 }
 
+.produtos .produto.indisponivel *:not(:last-child) {
+  opacity: 0.5;
+}
+
 .produtos .produto:hover {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
     rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
@@ -113,13 +117,14 @@
 
 .produtos .produto .info {
   margin-top: 5px;
-  height: 50px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .info h2 {
+  text-transform: uppercase;
   font-size: 16px;
   line-height: 14px;
 }
@@ -165,6 +170,13 @@
 
 .produtos .produto:hover .buy-btn::after {
   content: "Comprar";
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.produtos .produto.indisponivel:hover .buy-btn::after {
+  opacity: 1;
+  content: "Indisponivel";
   padding: 5px 10px;
   font-size: 16px;
 }
@@ -232,6 +244,12 @@
 
 .buy-process svg {
   width: 65px;
+}
+
+.error-message {
+  color: #e24646;
+  font-size: 12px;
+  margin: -5px 0 3px 0 !important;
 }
 
 .close {

@@ -16,7 +16,7 @@
     </button>
   </div>
   <div class="produtos">
-    <div class="produto" *ngFor="let produto of produtos">
+    <div class="produto" *ngFor="let produto of produtos" [ngClass]="{'indisponivel': !produto.disponibilidade}">
       <img [src]="produto.imagem" [alt]="produto.nome" />
       <div class="info">
         <h2>{{ produto.nome }}</h2>
@@ -45,11 +45,37 @@
         <div id="formulario_compra" *ngIf="estadoModal === 'formulario_compra'">
           <form [formGroup]="formCompra" class="buy-process">
             <h2>Dados pagamento</h2>
-            <input type="text" id="nome" placeholder="Nome" formControlName="nome" required />
-            <input type="email" id="email" placeholder="Email" formControlName="email" required />
-            <input type="text" id="celular" placeholder="Celular" formControlName="celular" required />
-            <h3>Total: R$ {{ produto.preco }}</h3>
-            <select name="quantidade" id="quantidade" formControlName="quantidade" required>
+            <input
+              type="text"
+              id="nome"
+              placeholder="Nome"
+              formControlName="nome"
+              required
+            />
+            <p class="error-message" *ngIf="error && formCompra.controls.nome.invalid">*Nome obrigatório</p>
+            <input
+              type="email"
+              id="email"
+              placeholder="Email"
+              formControlName="email"
+              required
+            />
+            <p class="error-message" *ngIf="error && formCompra.controls.email.invalid">*Preencha um email válido</p>
+            <input
+              type="text"
+              id="celular"
+              placeholder="Celular"
+              formControlName="celular"
+              required
+            />
+            <p class="error-message" *ngIf="error && formCompra.controls.celular.invalid">*Celular obrigatório</p>
+            <h3>Total: R$ {{ controleProdutoPreco(produto.preco) }}</h3>
+            <select
+              name="quantidade"
+              id="quantidade"
+              formControlName="quantidade"
+              required
+            >
               <option value="">Quantidade</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -58,17 +84,24 @@
               <option value="5">5</option>
               <option value="6">6</option>
             </select>
-            <select name="parcelas" id="parcelas" formControlName="parcelas" required>
+            <p class="error-message" *ngIf="error && formCompra.controls.quantidade.invalid">*Selecione uma quantidade</p>
+            <select
+              name="parcelas"
+              id="parcelas"
+              formControlName="parcelas"
+              required
+            >
               <option value="">Parcelas</option>
-              <option value="1">1x R$ {{ produto.preco.toFixed(2) }}</option>
+              <option value="1">1x R$ {{ controleProdutoPreco(produto.preco).toFixed(2) }}</option>
               <option value="2">
-                2x R$ {{ (produto.preco / 2).toFixed(2) }}
+                2x R$ {{ (controleProdutoPreco(produto.preco) / 2).toFixed(2) }}
               </option>
               <option value="3">
-                3x R$ {{ (produto.preco / 3).toFixed(2) }}
+                3x R$ {{ (controleProdutoPreco(produto.preco) / 3).toFixed(2) }}
               </option>
             </select>
-            <button (click)="mudarEstadoModal('loading')">Comprar</button>
+            <p class="error-message" *ngIf="error && formCompra.controls.parcelas.invalid">*Selecione uma parcela</p>
+            <button (click)="comprarProduto(produto.id)">Comprar</button>
             <div
               class="close"
               (click)="closeModal('select-buy-option-' + produto.id)"
@@ -78,7 +111,7 @@
           </form>
         </div>
         <div id="loading" *ngIf="estadoModal === 'loading'">
-          <app-loading (click)="mudarEstadoModal('sucesso')"></app-loading>
+          <app-loading></app-loading>
         </div>
         <div id="sucesso" *ngIf="estadoModal === 'sucesso'">
           <div class="buy-process">
@@ -110,7 +143,7 @@
                 />
               </g>
             </svg>
-            <h1 (click)="mudarEstadoModal('falha')">Sucesso!</h1>
+            <h1>Sucesso!</h1>
             <div
               class="close"
               (click)="closeModal('select-buy-option-' + produto.id)"
@@ -153,9 +186,7 @@
                 />
               </g>
             </svg>
-            <h1>
-              Houve uma falha!
-            </h1>
+            <h1>Houve uma falha!</h1>
             <div
               class="close"
               (click)="closeModal('select-buy-option-' + produto.id)"
@@ -167,7 +198,7 @@
       </app-modal>
       <div
         class="buy-btn"
-        (click)="openModal('select-buy-option-' + produto.id)"
+        (click)="openModal('select-buy-option-' + produto.id, produto.disponibilidade)"
       ></div>
     </div>
   </div>

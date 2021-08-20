@@ -8,7 +8,7 @@ import { Presente } from '../models/presente.model';
 })
 export class PresenteService {
 
-  apiUrl = 'http://ec2-3-137-176-93.us-east-2.compute.amazonaws.com';
+  apiUrl = 'https://jode-api.herokuapp.com';
 
   constructor(private http: HttpClient) { }
 

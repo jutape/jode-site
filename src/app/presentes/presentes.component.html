@@ -20,7 +20,7 @@
       <img [src]="produto.imagem" [alt]="produto.nome" />
       <div class="info">
         <h2>{{ produto.nome }}</h2>
-        <p>R$ {{ produto.preco }}</p>
+        <p>R$ {{ produto.preco.toFixed(2) }}</p>
       </div>
       <h3>{{ produto.categoria.titulo }}</h3>
       <app-modal [id]="'select-buy-option-' + produto.id">

@@ -15,7 +15,8 @@ form {
 
 h1,
 h2,
-p {
+p, a {
+  color: #666;
   text-align: center;
   padding: 0px;
   margin: 5px 5px;

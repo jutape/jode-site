@@ -1,0 +1,277 @@
+@-webkit-keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .container {
+    font-family: "josefin sans";
+    padding: 30px;
+  }
+  
+  .categorias {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    overflow-x: auto;
+    max-width: 100%;
+    width: min-content;
+  }
+  
+  .categorias::-webkit-scrollbar {
+    width: 10px;
+    height: 5px;
+  }
+  
+  /* Track */
+  .categorias::-webkit-scrollbar-track {
+    background: none;
+  }
+  
+  /* Handle */
+  .categorias::-webkit-scrollbar-thumb {
+    background: #96887d;
+  }
+  
+  /* Handle on hover */
+  .categorias::-webkit-scrollbar-thumb:hover {
+    background: #89807b;
+  }
+  
+  .categorias button {
+    font-size: 16px;
+    font-family: "josefin sans";
+    border: 1px solid #574e47;
+    padding: 6px 15px;
+    background-color: white;
+    color: #574e47;
+    border-radius: 15px;
+    margin: 10px;
+    transition: all 0.4s;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .categorias button.active {
+    font-weight: bold;
+    color: white;
+    background-color: #574e47;
+  }
+  
+  .categorias button:hover {
+    font-weight: bold;
+    font-style: italic;
+    letter-spacing: 3px;
+  }
+  
+  .categorias .line {
+    padding: 0 1px;
+    height: 25px;
+    margin: 10px;
+    background-color: #574e47;
+  }
+  
+  .produtos {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .produtos .produto {
+    -webkit-animation: fade-in 1s ease-in both;
+    animation: fade-in 1s ease-in both;
+    width: 250px;
+    position: relative;
+    padding: 15px;
+    transition: all 0.4s;
+    margin: 10px 2px;
+  }
+  
+  .produtos .produto.indisponivel *:not(:last-child) {
+    opacity: 0.5;
+  }
+  
+  .produtos .produto:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  }
+  
+  .produtos .produto img {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .produtos .produto .info {
+    margin-top: 5px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .info h2 {
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 14px;
+  }
+  .info p {
+    font-size: 16px;
+    white-space: nowrap;
+  }
+  
+  .produtos .produto h3 {
+    font-size: 15px;
+    color: #574e47;
+  }
+  
+  .produtos .btn {
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    color: #574e47;
+    border: 1px solid #574e47;
+    border-radius: 25px;
+    transition: all 0.4s;
+    float: right;
+    right: 20px;
+    cursor: pointer;
+  }
+
+  .produtos .btn.delete-btn {
+    float: left;
+    left: 20px;
+    right: none;
+  }
+  
+  .produtos .produto .btn:hover {
+    background: #574e47;
+    color: white;
+  }
+
+  .produtos .produto:hover .btn {
+    width: fit-content;
+  }
+  
+  .produtos .produto .btn.edit-btn::after {
+    transition: padding 0.8s;
+    content: "✏️";
+    font-size: 16px;
+    line-height: 0px;
+  }
+  
+  .produtos .produto:hover .btn.edit-btn::after {
+    content: "Editar";
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+
+  .produtos .produto .btn.delete-btn::after {
+    transition: padding 0.8s;
+    content: "🗑️";
+    font-size: 16px;
+    line-height: 0px;
+  }
+  
+  .produtos .produto:hover .btn.delete-btn::after {
+    content: "Remover";
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+  
+  .buy-process {
+    font-family: 'josefin sans';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .buy-process * {
+    margin: 10px 0;
+  }
+  
+  .buy-process button {
+    font-family: 'josefin sans';
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    width:200px;
+    background-color: #96887d;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  
+  .buy-process button:hover {
+    background-color: #89807b;
+  }
+  
+  .buy-process a {
+    color: #4d4947;
+    transition: 0.5s;
+  }
+  
+  .buy-process a:hover {
+    color: #89807b;
+  }
+  
+  .buy-process input {
+    font-size: 15px;
+    color: #666;
+    padding: 6px;
+    display: block;
+    width: 50%;
+    font-family: "josefin sans";
+    border: 1px solid #666;
+  }
+  
+  .buy-process select {
+    font-size: 15px;
+    color: #666;
+    padding: 6px;
+    display: block;
+    font-family: "josefin sans";
+    border: 1px solid #666;
+  }
+  
+  .buy-process input:focus {
+    outline: 0;
+  }
+  
+  .buy-process svg {
+    width: 65px;
+  }
+  
+  .error-message {
+    color: #e24646;
+    font-size: 12px;
+    margin: -5px 0 3px 0 !important;
+  }
+  
+  .close {
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    cursor: pointer;
+  }
+  

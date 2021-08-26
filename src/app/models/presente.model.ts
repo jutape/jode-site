@@ -9,3 +9,13 @@ export interface Presente {
     link: string;
     imagem: string;
 }
+
+export interface ProdutoRequest {
+    nome: string;
+    preco: number;
+    categoria: number;
+    disponibilidade: boolean;
+    link: string;
+    imagem: string;
+    senha: string;
+}

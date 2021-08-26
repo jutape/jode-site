@@ -19,6 +19,7 @@ import { ModalService } from './services/modal.service';
 import { LoadingComponent } from './loading/loading.component';
 import { ConfirmacoesComponent } from './confirmacoes/confirmacoes.component';
 import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
+import { PresentesControlComponent } from './presentes-control/presentes-control.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.componen
     ModalComponent,
     LoadingComponent,
     ConfirmacoesComponent,
-    PaginaInicialComponent
+    PaginaInicialComponent,
+    PresentesControlComponent
   ],
   imports: [
     BrowserModule,

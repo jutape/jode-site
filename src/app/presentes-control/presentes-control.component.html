@@ -1,0 +1,217 @@
+<div class="container">
+  <div class="categorias">
+    <button (click)="openModal('manage', 'adicionarProduto')">Adicionar Produto</button>
+    <div class="line"></div>
+    <button (click)="openModal('manage', 'adicionarCategoria')">Adicionar Categoria</button>
+    <app-modal id="manage">
+        <form
+          [formGroup]="formProdutoNovo"
+          class="buy-process"
+          *ngIf="estadoModal === 'adicionarProduto'"
+        >
+          <h2>Dados produto</h2>
+          <input
+            type="text"
+            id="nome"
+            placeholder="Nome"
+            formControlName="nome"
+            required
+          />
+          <input
+            type="text"
+            id="imagem"
+            placeholder="Link da imagem"
+            formControlName="imagem"
+            required
+          />
+          <input
+            type="text"
+            id="link"
+            placeholder="Link"
+            formControlName="link"
+            required
+          />
+          <input
+            type="number"
+            id="preco"
+            placeholder="Preço"
+            formControlName="preco"
+            required
+          />
+
+          <select
+            name="categoria"
+            id="categoria"
+            formControlName="categoria"
+            required
+          >
+            <option value="">Categoria</option>
+            <option *ngFor="let categoria of categorias" [value]="categoria.id">
+              {{ categoria.titulo }}
+            </option>
+          </select>
+          <select
+            name="disponibilidade"
+            id="disponibilidade"
+            formControlName="disponibilidade"
+            required
+          >
+            <option value="">disponibilidade</option>
+            <option value="1">Disponivel</option>
+            <option value="0">Indisponivel</option>
+          </select>
+
+          <input
+            type="text"
+            id="senha"
+            placeholder="senha"
+            formControlName="senha"
+            required
+          />
+          <button (click)="adicionarProduto()">Adicionar</button>
+          <div
+            class="close"
+            (click)="closeModal('manage')"
+          >
+            X
+          </div>
+          
+        </form>
+
+        <form
+          [formGroup]="formCategoria"
+          class="buy-process"
+          *ngIf="estadoModal === 'adicionarCategoria'"
+        >
+          <h2>Dados categoria</h2>
+          
+          <input
+            type="text"
+            id="categoria"
+            placeholder="Titulo categoria"
+            formControlName="categoria"
+            required
+          />
+          <input
+            type="text"
+            id="senha"
+            placeholder="senha"
+            formControlName="senha"
+            required
+          />
+          <button (click)="adicionarCategoria()" >Adicionar</button>
+          <div
+            class="close"
+            (click)="closeModal('manage')"
+          >
+            X
+          </div>
+          
+        </form>
+        
+    </app-modal>
+  </div>
+  <div class="produtos">
+    <div class="produto" *ngFor="let produto of produtos">
+      <img [src]="produto.imagem" [alt]="produto.nome" />
+      <div class="info">
+        <h2>{{ produto.nome }}</h2>
+        <p>R$ {{ produto.preco.toFixed(2) }}</p>
+      </div>
+      <h3>{{ produto.categoria.titulo }}</h3>
+      <app-modal [id]="'select-edit-option-' + produto.id">
+        <form
+          [formGroup]="formEditar"
+          class="buy-process"
+          *ngIf="estadoModal === 'editar'"
+        >
+          <h2>Dados produto</h2>
+          <input
+            type="text"
+            id="nome"
+            placeholder="Nome"
+            formControlName="nome"
+            required
+          />
+          <input
+            type="text"
+            id="imagem"
+            placeholder="Link da imagem"
+            formControlName="imagem"
+            required
+          />
+          <input
+            type="text"
+            id="link"
+            placeholder="Link"
+            formControlName="link"
+            required
+          />
+          <input
+            type="number"
+            id="preco"
+            placeholder="Preço"
+            formControlName="preco"
+            required
+          />
+
+          <select
+            name="categoria"
+            id="categoria"
+            formControlName="categoria"
+            required
+          >
+            <option value="">Categoria</option>
+            <option *ngFor="let categoria of categorias" [value]="categoria.id">
+              {{ categoria.titulo }}
+            </option>
+          </select>
+          <select
+            name="disponibilidade"
+            id="disponibilidade"
+            formControlName="disponibilidade"
+            required
+          >
+            <option value="">disponibilidade</option>
+            <option value="1">Disponivel</option>
+            <option value="0">Indisponivel</option>
+          </select>
+
+          <input
+            type="text"
+            id="senha"
+            placeholder="senha"
+            formControlName="senha"
+            required
+          />
+          <button (click)="enviarEdicaoProduto(produto)">Editar</button>
+          <div
+            class="close"
+            (click)="closeModal('select-edit-option-' + produto.id)"
+          >
+            X
+          </div>
+        </form>
+        <div class="buy-process" *ngIf="estadoModal === 'deletar'">
+          <h3>
+            Você tem certeza que gostaria de remover o produto
+            <b>{{ produto.nome }}</b
+            >?
+          </h3>
+          <button (click)="removerProduto(produto.id)">Tenho</button>
+          <div
+            class="close"
+            (click)="closeModal('select-edit-option-' + produto.id)"
+          >
+            X
+          </div>
+        </div>
+      </app-modal>
+      <div class="btn edit-btn" (click)="editarProduto(produto)"></div>
+      <div
+        class="btn delete-btn"
+        (click)="openModal('select-edit-option-' + produto.id, 'deletar')"
+      ></div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Presente } from '../models/presente.model';
+import { Presente, ProdutoRequest } from '../models/presente.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,18 @@ export class PresenteService {
 
   getByCategoriaId(id: number): Observable<Array<Presente>>{
     return this.http.get<Array<Presente>>(`${this.apiUrl}/api/presente/categoria/${id}`);
+  }
+
+  add(produtoRequest: ProdutoRequest) {
+    return this.http.post<Array<Presente>>(`${this.apiUrl}/api/presente`, produtoRequest);
+  }
+
+  edit(produtoRequest: ProdutoRequest, id: number) {
+    return this.http.put<Array<Presente>>(`${this.apiUrl}/api/presente/${id}`, produtoRequest);
+  }
+
+  remover(id: number) {
+    return this.http.delete(`${this.apiUrl}/api/presente/${id}`);
   }
 
 }

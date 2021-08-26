@@ -1,9 +1,0 @@
-.menu-spacing {
-    padding: 0 0 0 300px;
-}
-
-@media screen and (max-width: 750px) { 
-    .menu-spacing {
-        padding: 80px 0 0 0;
-    }
-}

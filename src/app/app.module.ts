@@ -17,6 +17,8 @@ import { PresenteService } from './services/presente.service';
 import { ModalComponent } from './modal/modal.component';
 import { ModalService } from './services/modal.service';
 import { LoadingComponent } from './loading/loading.component';
+import { ConfirmacoesComponent } from './confirmacoes/confirmacoes.component';
+import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { LoadingComponent } from './loading/loading.component';
     CountdownComponent,
     PresentesComponent,
     ModalComponent,
-    LoadingComponent
+    LoadingComponent,
+    ConfirmacoesComponent,
+    PaginaInicialComponent
   ],
   imports: [
     BrowserModule,

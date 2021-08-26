@@ -16,4 +16,8 @@ export class PresencaService {
     return this.http.post<Presenca>(`${ this.apiUrl }/api/presenca`, presencaRequest);
   }
 
+  listar() {
+    return this.http.get<Presenca[]>(`${ this.apiUrl }/api/presenca`);
+  }
+
 }

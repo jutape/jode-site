@@ -1,0 +1,18 @@
+<div class="wrapper">
+
+    <div class="table">
+        <div class="row header">
+          <div class="cell">Nome</div>
+          <div class="cell">Familia</div>
+          <div class="cell">Confirmação</div>
+        </div>
+      
+        <div class="row" *ngFor="let presenca of presencas">
+          <div class="cell" data-title="Nome">{{presenca.nome}}</div>
+          <div class="cell" data-title="Familia">{{toEmoji(presenca.familia)}}</div>
+          <div class="cell" data-title="Confirmação">{{toEmoji(presenca.confirmacao)}}</div>
+        </div>
+      
+    </div>
+
+</div>
